@@ -1,0 +1,79 @@
+{% extends 'gallery.html' %}
+{% load qr_code %}
+{% load static %}
+
+{% block content %}
+   
+
+    <section class="breadcrumb_area" style="background-image: url('../static/img/team2.jpg');background-position:  center center; background-repeat: no-repeat; background-size: cover;">
+        <div class="container">
+            <div class="breadcrumb_content text-center">
+                <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">Our Team</h1>
+                <p class="f_400 w_color f_size_16 l_height26">Why I say old chap that is spiffing off his nut arse pear shaped plastered<br> Jeffrey bodge barney some dodgy.!!</p>
+            </div>
+        </div>
+    </section>
+    <section class="payment_testimonial_area " style="margin-bottom: 121px;">
+        <div class="container">
+            <div class="row payment_testimonial_info flex-row-reverse mt-1">
+                <div class="col-lg-7 d-flex align-items-center">
+                    <div class="testimonial_content">
+                        <div class="icon">,,</div>
+                        <p class="f_p f_size_20">“{{ query.about }}</p>
+                    <div class="row">
+                        <div class="col-sm-6 mt-1">
+                            <div class="author f_600 f_p t_color f_size_20">{{ query.firstname }} {{ query.lastname }}</div>
+                            <div class="author f_600 f_p t_color f_size_20">{{ query.user_id }}</div>
+                            <div class="author_description f_p f_size_15">{{ query.profession}}</div>
+                            <div class="author_description f_p f_size_15"><h6> {{ query.email}} </h6></div>
+                        </div>
+                        <div class="col-sm-6">
+                            {% qr_from_text link  size=10 border=11 %}
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-5">
+                    <div class="testimonial_img Cus_test_img mx-3">             
+                        <img src="{{ query.picture.url }}" alt="" style="width: 350px; height: 350px; border-radius: 100%;">
+                       <a href="{% url 'edit_profile' slug=query.user_id %}"><span class="btn btn-secondary mx-3">Edit</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="feedback_area dk_bg_one sec_pad">
+        <div class="container custom_container">
+            <div class="sec_title text-center mb_70 wow fadeInUp" data-wow-delay="0.4s">
+                <h2 class="f_p f_size_30 l_height50 f_600 w_color">Team</h2>
+            </div>
+            <div class="feedback_slider owl-carousel">
+            {% for x in query2 %}
+                <div class="item">
+                    <div class="feedback_item">
+                        <div class="feedback_slider_author">
+                            <div class="media">
+                                <div class="img">
+                                    <img src="{{ x.image }}" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="w_color f_size_15 f_p f_500">{{ x.firstname }} {{ x.lastname }}</h5>
+                                    <h6 class="f_p f_400">{{ x.profession }}</h6>
+                                </div>
+                            </div>
+                          
+                        </div>
+                        <p class="d_p_color f_size_15" style="height:211px">{{ x.about|truncatechars:210 }}</p>
+                        <div class="shap_one"></div>
+                        <div class="shap_two"></div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+
+   {% endblock %}

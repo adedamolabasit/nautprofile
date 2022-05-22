@@ -31,7 +31,7 @@ class Profile(models.Model):
         canvas=Image.new('RGB',(350, 350),'white')
         draw=ImageDraw.Draw(canvas)
         canvas.paste(qrcode_img)
-        fname=f'qr_code-{self.firstname}/{self.lastname}/{self.user_id}.png'
+        fname=f'qr_code-{self.firstname}/{self.lastname}/qr_code.png'
         buffer=BytesIO()
         canvas.save(buffer,"PNG")
         self.qr_code.save(fname,File(buffer),save=False)
@@ -49,8 +49,9 @@ class Page(models.Model):
 
 
 class Gallery(models.Model):
-    image=models.TextField()
-    image_name=models.TextField()
+    # image=models.TextField()
+    # image_name=models.TextField()
+    picture=models.FileField(upload_to='profile/')
     user_id=models.CharField(max_length=45)
     time=models.DateTimeField(auto_now_add=True)
     def __str__(self):

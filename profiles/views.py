@@ -222,10 +222,11 @@ def add_gallery(request):
     file = request.FILES.get('file')
     if request.method == 'POST':         
         if file is not None:     
-            fs = FileSystemStorage()
-            filename=fs.save(file.name,file)
-            url=fs.url(filename)
-            image=Gallery(image=url,image_name=filename)
+            # fs = FileSystemStorage()
+            # filename=fs.save(file.name,file)
+            # url=fs.url(filename)
+            picture=file
+            image=Gallery(picture=picture)
             image.save()
         else:
             messages.info(request,'Upload an Image')

@@ -58,7 +58,7 @@
                         <div class="feedback_slider_author">
                             <div class="media">
                                 <div class="img">
-                                    <img src="{{ x.image }}" alt="">
+                                    <img src="{{ x.picture.url }}" alt="">
                                 </div>
                                 <div class="media-body">
                                     <h5 class="w_color f_size_15 f_p f_500">{{ x.firstname }} {{ x.lastname }}</h5>
@@ -67,7 +67,7 @@
                             </div>
                           
                         </div>
-                        <p class="d_p_color f_size_15" style="height:211px">{{ x.about|truncatechars:210 }}</p>
+                        <!-- <p class="d_p_color f_size_15" style="height:211px">{{ x.about|truncatechars:210 }}</p> -->
                         <div class="shap_one"></div>
                         <div class="shap_two"></div>
                     </div>

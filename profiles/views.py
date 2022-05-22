@@ -228,7 +228,8 @@ def add_gallery(request):
             # image=Gallery(image=url,image_name=filename)
             # image.save()
             picture=file
-            Gallery(picture=picture)
+            image=Gallery(picture=picture)
+            image.save()
         else:
             messages.info(request,'Upload an Image')
             # error="Upload Image"

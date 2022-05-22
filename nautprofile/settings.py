@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-y*k7elw6de+24^2uij$-vpkq#g!n22+xbpufl@q)7*!l5ch^ofk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = FALSE
 
 ALLOWED_HOSTS = ['nautilusprofile.herokuapp.com']
 
@@ -145,11 +145,11 @@ MEDAIA_ROOT=os.path.join(BASE_DIR,'media/')
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 EMAIL_HOST='smtp.gmail.com'
-EMAIL_PORT='465'
+EMAIL_PORT='587'
 EMAIL_HOST_USER='adedamolabasit09@gmail.com'
 EMAIL_HOST_PASSWORD='Blackhack1!'
-EMAIL_USE_TLS=False
-EMAIL_USE_SSL=True
+EMAIL_USE_TLS=True
+EMAIL_USE_SSL=False
 
 
 

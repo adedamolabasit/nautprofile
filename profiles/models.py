@@ -27,7 +27,7 @@ class Profile(models.Model):
         return reverse('edit_profile',kwargs={'slug':self.user_id})
     
     def save(self,*args,**kwargs):
-        qrcode_img=qrcode.make('nautilusprofile.herokuapp.com'+self.get_absolute_url())
+        qrcode_img=qrcode.make('nautilus'+self.get_absolute_url())
         canvas=Image.new('RGB',(350, 350),'white')
         draw=ImageDraw.Draw(canvas)
         canvas.paste(qrcode_img)
@@ -49,7 +49,9 @@ class Page(models.Model):
 
 
 class Gallery(models.Model):
-    picture=models.FileField(upload_to='Gallery/')
+    image=models.TextField()
+    image_name=models.TextField()
+    user_id=models.CharField(max_length=45)
     time=models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.image_name}"

@@ -106,7 +106,8 @@ def add_profile(request):
             profession=profession,email=email,user_id=user_id,picture=picture)
             profile.save()
           
-
+            firstname=request.POST.get('firstname')
+            lastname=request.POST.get('lastname')
             response=HttpResponse(content_type='txt/csv')
             response['Content-Disposition']="attachment;filename=f'nautilus-profile-{fistname}-{lastname}.csv"
             writer=csv.writer(response)       

@@ -28,7 +28,7 @@ class Profile(models.Model):
     
     def save(self,*args,**kwargs):
         qrcode_img=qrcode.make('nautilusprofile.herokuapp.com'+self.get_absolute_url())
-        canvas=Image.new('RGB',(350, 350),'white')
+        canvas=Image.new('RGB',(400, 400),'white')
         draw=ImageDraw.Draw(canvas)
         canvas.paste(qrcode_img)
         fname=f'qr_code-{self.firstname}/{self.lastname}/qr_code.png'

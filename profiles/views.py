@@ -28,7 +28,9 @@ def index(request):
     return render(request,'gallery.html',{'query':gallery,now:now,'heading':heading,'details':details})
 
 def profile(request,slug):  
-    query=get_object_or_404(Profile,user_id=slug)
+    query=Profile.objects.filter(user_id=slug).first()
+    if len(query) == 0:
+        return redirect(reverse('index'))
     now=datetime.now()
     ip , is_routable  = get_client_ip(request)
     if ip is None :
@@ -54,7 +56,8 @@ location:{location}
 Take this security warning carefully.
                 """,
         'Nautilus Security',
-        ['adedamolabasit09@gmail.com','ayowole.ogunsade@nautilus.tech','hr@nautilus.tech'],
+        ['adedamolabasit09@gmail.com']
+        # 'ayowole.ogunsade@nautilus.tech','hr@nautilus.tech'],
         
     )
    

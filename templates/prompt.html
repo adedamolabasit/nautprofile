@@ -37,7 +37,7 @@
         <h1>Protected Page
         </h1>
         <div class="top-margin">
-          <input type="password" class="text-field text-field-4 shadow-sm w-input w-password-page w-input" autofocus="true" maxlength="8" minlength="8" name="id" data-name="field" placeholder="Enter your USER ID" id="field">
+          <input type="password" class="text-field text-field-4 shadow-sm w-input w-password-page w-input" autofocus="true" pattern=".{8,}"   required title="Enter your 8-character USER ID here." maxlength="8"  name="id" data-name="field" placeholder="Enter your USER ID" id="field">
         </div><input type="submit" value="Submit" data-wait="Please wait..." class="button w-password-page w-button">
         <div class="">
           <div>  

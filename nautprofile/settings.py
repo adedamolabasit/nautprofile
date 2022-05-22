@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
+from pickle import FALSE
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-y*k7elw6de+24^2uij$-vpkq#g!n22+xbpufl@q)7*!l5ch^ofk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = FALSE
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['nautilusprofile.herokuapp.com']
 
 
 # Application definition
@@ -80,10 +82,11 @@ WSGI_APPLICATION = 'nautprofile.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'nautprofie',
-        'USER':'postgres',
-        'PASSWORD':'Nautilus5he!',
-        'HOST':'localhost'
+        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'NAME': 'nautprofie',
+        # 'USER':'postgres',
+        # 'PASSWORD':'Nautilus5he!',
+        # 'HOST':'localhost'
     }
 }
 
@@ -162,3 +165,5 @@ AWS_DEFAULT_ACL=None
 
 DEFAULT_FILE_STORAGE ='storages.backends.s3boto3.S3Boto3Storage'
 # STATICFILES_STORAGE='storages.backends.s3boto3.s3BotoStorage'
+
+django_heroku.settings(locals())

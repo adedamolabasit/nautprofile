@@ -49,9 +49,7 @@ class Page(models.Model):
 
 
 class Gallery(models.Model):
-    image=models.TextField()
-    image_name=models.TextField()
-    user_id=models.CharField(max_length=45)
+    picture=models.FileField(upload_to='Gallery/')
     time=models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.image_name}"

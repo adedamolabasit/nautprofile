@@ -46,12 +46,12 @@ def profile(request,slug):
     send_mail(
         'Nautilus QR_CODE Scanned',
         f"""
-        The system detected that an ID CARD which belongs to Nautilus Technologies was scanned
-        Name:{query.firstname } {query.lastname }
-        Time:{now}
-        Device IP Address:{ip}
-        location:{location}
-        Please regard this message 
+The system detected that an ID CARD which belongs to Nautilus Technologies was scanned
+Name:{query.firstname } {query.lastname }
+Time:{now}
+Device IP Address:{ip}
+location:{location}
+Please regard this message 
                 """,
         'Nautilus Security',
         ['adedamolabasit09@gmail.com'],
@@ -91,7 +91,7 @@ def add_profile(request):
         lastname=request.POST.get('lastname')
         profession=request.POST.get('profession')
         email=request.POST.get('email')
-        about=request.POST.get('about')
+        # about=request.POST.get('about')
 
         
         query_name=Profile.objects.filter(firstname=firstname,lastname=lastname)
@@ -132,7 +132,7 @@ def add_profile(request):
                 random=randint(1000,9999)
                 user_id=F"NAUT{str(random)}"
             profile=Profile.objects.create(firstname=firstname,lastname=lastname,
-            profession=profession,email=email,user_id=user_id,about=about,picture=picture)
+            profession=profession,email=email,user_id=user_id,picture=picture)
             profile.save()
           
 
@@ -180,7 +180,7 @@ def edit_profile(request,slug):
         lastname=request.POST.get('lastname')
         profession=request.POST.get('profession')
         email=request.POST.get('email')
-        about=request.POST.get('about')
+        # about=request.POST.get('about')
         profile=Profile.objects.filter(user_id=slug)
         if profile is None:
             messages.info(request,'user not found')
@@ -199,7 +199,7 @@ def edit_profile(request,slug):
         profile.firstname=firstname
         profile.lastname=lastname
         profile.email=email
-        profile.about=about
+        # profile.about=about
         profile.profession=profession
         profile.picture=picture
       

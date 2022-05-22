@@ -25,13 +25,13 @@ app_name="home"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index,name='index'),
-    path('team/',views.team,name='team'),
-    path('profile/<slug:slug>/edit',views.edit_profile,name='edit_profile'),
+    path('nsbdw337e8fbv/',views.index,name='index'),
+    path('efnncbecwu/',views.team,name='team'),
+    path('eeeffefffn/<slug:slug>/edit',views.edit_profile,name='edit_profile'),
     path('profile/<slug:slug>',views.profile,name='profile'),
     path('profile/add/',views.add_profile,name='add_profile'),
-    path('gallery/',views.add_gallery,name='add_gallery'),
-    path('prompt/',views.prompt,name='prompt'),
+    path('edfnffejfej/',views.add_gallery,name='add_gallery'),
+    path('',views.prompt,name='prompt'),
 ]
 
 if settings.DEBUG:

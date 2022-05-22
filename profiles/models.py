@@ -13,7 +13,7 @@ import qrcode
 class Profile(models.Model):
     firstname=models.CharField(max_length=51)
     lastname=models.CharField(max_length=51)
-    about=models.TextField(default='yes')
+    about=models.TextField(default='.',null=True,blank=True)
     email=models.EmailField()
     picture=models.FileField(upload_to='profile/')
     qr_code=models.ImageField(upload_to='qr_codes/')

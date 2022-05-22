@@ -188,9 +188,10 @@ def edit_profile(request,slug):
             # return render(request,'error.html',{'error':error})
         file = request.FILES.get('file',None)
         if file is not None:
-            fs = FileSystemStorage()
-            filename=fs.save(file.name,file)
-            url=fs.url(filename)
+            # fs = FileSystemStorage()
+            # filename=fs.save(file.name,file)
+            # url=fs.url(filename)
+            picture=file
         else:
             messages.info(request,'Upload an Image')
             # error="Upload Image"
@@ -200,8 +201,8 @@ def edit_profile(request,slug):
         profile.email=email
         profile.about=about
         profile.profession=profession
-        profile.image=url
-        profile.image_name=filename
+        profile.picture=picture
+      
         profile.update()
         return redirect(reverse('profile',kwargs={'slug':slug}))
     if request.method =="GET":

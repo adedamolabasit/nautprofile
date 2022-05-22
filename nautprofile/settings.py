@@ -80,7 +80,10 @@ WSGI_APPLICATION = 'nautprofile.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'nautprofie',
+        'USER':'postgres',
+        'PASSWORD':'Nautilus5he!',
+        'HOST':'localhost'
     }
 }
 
@@ -140,7 +143,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT='465'
 EMAIL_HOST_USER='adedamolabasit09@gmail.com'
-EMAIL_HOST_PASSWORD='Nautilus6he!'
+EMAIL_HOST_PASSWORD='Blackhack1!'
 EMAIL_USE_TLS=False
 EMAIL_USE_SSL=True
 

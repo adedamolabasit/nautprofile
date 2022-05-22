@@ -28,7 +28,8 @@
                             <div class="author_description f_p f_size_15"><h6> {{ query.email}} </h6></div>
                         </div>
                         <div class="col-sm-6">
-                            {% qr_from_text link  size=10 border=11 %}
+                            <!-- {% qr_from_text link  size=10 border=11 %} -->
+                            <img src="{{ query.qr_code.url }}" alt="" style="height: 155px; width:155px">
                         </div>
                     </div>
                     </div>

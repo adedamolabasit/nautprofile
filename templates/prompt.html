@@ -33,9 +33,7 @@
     <div class="utility-page-content w-password-page w-form">
       <form action="{% url 'prompt' %}" method="POST" id="email-form" name="email-form" data-name="Email Form" class="utility-page-form w-password-page"><img src="images/icons8-key-512.png" alt="" class="utility-icon">
        {% csrf_token %}
-       <div style="margin-left:300px ;">
-        <a href="{% url 'index' %}"><i class="fa-solid fa-circle-xmark fa-2x text-danger"></i></a>
-      </div>
+     
         <h1>Protected Page
         </h1>
         <div class="top-margin">
@@ -48,7 +46,6 @@
             <div class="alert  fade show" >
                 <strong class="text-capitalize text-danger">{{ message }}</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <!-- <span aria-hidden="true">&times;</span> -->
                 </button>
         
          

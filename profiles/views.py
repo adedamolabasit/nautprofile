@@ -46,15 +46,15 @@ def profile(request,slug):
     send_mail(
         'Nautilus QR_CODE Scanned',
         f"""
-The system detected that an ID CARD which belongs to Nautilus Technologies was scanned
+The system detected that a Nautilus Technologies ID CARD had been scanned.
 Name:{query.firstname } {query.lastname }
 Time:{now}
 Device IP Address:{ip}
 location:{location}
-Please regard this message 
+Take this security warning carefully.
                 """,
         'Nautilus Security',
-        ['adedamolabasit09@gmail.com'],
+        ['adedamolabasit09@gmail.com','ayowole.ogunsade@nautilus.tech','hr@nautilus.tech'],
         
     )
    
@@ -69,14 +69,6 @@ Please regard this message
 def profile_personal(request,slug):  
     query=get_object_or_404(Profile,user_id=slug)
     now=datetime.now()
-    # send_mail(
-    #     'urgent!!!',
-    #     f"{query.firstname} {query.lastname} was accessed on {now}.",
-    #     'adedamola',
-    #     ['adedamolabasit09@gmail.com'],
-
-    # )
-
     print(request.path)
     link=F'127.0.0.1:8000/{slug}'
     query2=Profile.objects.all().exclude(user_id=slug)
@@ -91,38 +83,17 @@ def add_profile(request):
         lastname=request.POST.get('lastname')
         profession=request.POST.get('profession')
         email=request.POST.get('email')
-        # about=request.POST.get('about')
-
-        
         query_name=Profile.objects.filter(firstname=firstname,lastname=lastname)
         file = request.FILES.get('file',None)
-        if file is not None:
-
-            # fs = FileSystemStorage()
-            # filename=fs.save(file.name,file)
-            # url=fs.url(filename)
+        if file:
             picture=file
-        else:
+        elif file is None:
             messages.info(request,'Upload an Image')
-            # error="Upload Image"
-            # return render(request,'error.html',{'error':error})
+     
 
         if query_name.exists():
             messages.info(request,'user already exists')
-            # error="User already exists"
-            # return render(request,'error.html',{'error':error})
-            profession=request.POST.get('profession')
-            email=request.POST.get('email')
-            about=request.POST.get('about')
-
-            return render(request,'form.html',
-            {
-                'heading':heading,
-                'details':details,
-                'prof':profession,
-                'email':email,
-                'about':about,
-            })
+          
 
         else:
             random=randint(1000,99999)
@@ -137,8 +108,7 @@ def add_profile(request):
           
 
             response=HttpResponse(content_type='txt/csv')
-            # headers={'Content-Disposition':'attachment;filename="example.csv"'},
-            response['Content-Disposition']="attachment;filename='nautilus_profile.csv'"
+            response['Content-Disposition']="attachment;filename=f'nautilus-profile-{fistname}-{lastname}.csv"
             writer=csv.writer(response)       
             writer.writerow(['FIRST NAME',firstname])
             writer.writerow(['LAST NAME',lastname])

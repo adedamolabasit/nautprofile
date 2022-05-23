@@ -14,10 +14,19 @@ from pathlib import Path
 import os
 import django_heroku
 from pickle import FALSE
+import socket
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+import socket
 
+# if socket.gethostname() == "server_name":
+#     DEBUG = False
+#     ALLOWED_HOSTS = ["nautilusprofile.herokuapp.com",]
+#     ...
+# else:
+#     DEBUG = True
+#     ALLOWED_HOSTS = ["localhost", "127.0.0.1",]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -26,9 +35,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-y*k7elw6de+24^2uij$-vpkq#g!n22+xbpufl@q)7*!l5ch^ofk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['nautilusprofile.herokuapp.com']
+ALLOWED_HOSTS = ['www.nautilusprofile.herokuapp.com',"localhost", "127.0.0.1",]
 
 
 # Application definition
@@ -138,6 +147,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static/')
 ]
 # STATIC_ROOT=os.path.join(BASE_DIR,'static/')
+
 
 MEDIA_URL ="/media/"
 MEDAIA_ROOT=os.path.join(BASE_DIR,'media/')
